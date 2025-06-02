@@ -1,1 +1,79 @@
+import turtle
+import random
+import time
 
+# Cấu hình màn hình
+screen = turtle.Screen()
+screen.bgcolor("midnightblue")
+screen.title("Tình yêu và sao rơi ✨💖")
+
+# Vẽ trái tim
+def draw_heart():
+    heart = turtle.Turtle()
+    heart.color("red")
+    heart.fillcolor("red")
+    heart.speed(2)
+    heart.penup()
+    heart.goto(0, -100)
+    heart.pendown()
+    
+    heart.begin_fill()
+    heart.left(140)
+    heart.forward(180)
+    heart.circle(-90, 200)
+    heart.setheading(60)
+    heart.circle(-90, 200)
+    heart.forward(180)
+    heart.end_fill()
+    heart.hideturtle()
+
+# Vẽ sao
+def draw_star(x, y, size=10, color="white"):
+    star = turtle.Turtle()
+    star.hideturtle()
+    star.speed(0)
+    star.color(color)
+    star.penup()
+    star.goto(x, y)
+    star.pendown()
+    star.begin_fill()
+    for _ in range(5):
+        star.forward(size)
+        star.right(144)
+    star.end_fill()
+
+# Hiệu ứng sao rơi
+def shooting_star():
+    star = turtle.Turtle()
+    star.hideturtle()
+    star.speed(0)
+    star.color("lightyellow")
+    star.pensize(2)
+    star.penup()
+    x = random.randint(-300, 300)
+    y = random.randint(100, 300)
+    star.goto(x, y)
+    star.pendown()
+    star.showturtle()
+    for _ in range(20):
+        star.forward(10)
+        star.right(2)
+        time.sleep(0.01)
+    star.hideturtle()
+
+# Vẽ trái tim tình yêu
+draw_heart()
+
+# Vẽ các ngôi sao nhỏ lung linh
+for _ in range(30):
+    x = random.randint(-300, 300)
+    y = random.randint(-100, 300)
+    size = random.randint(5, 15)
+    draw_star(x, y, size)
+
+# Hiệu ứng sao băng
+for _ in range(5):
+    shooting_star()
+
+# Giữ màn hình
+turtle.done()
